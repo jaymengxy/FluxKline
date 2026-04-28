@@ -268,4 +268,4 @@ CustomPaint(
 
 ## License
 
-MIT
+[MIT](https://github.com/jaymengxy/FluxKline/blob/main/LICENSE)
