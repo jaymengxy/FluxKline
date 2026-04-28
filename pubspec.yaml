@@ -1,0 +1,21 @@
+name: flux_kline
+description: A high-performance, real-time K-line (candlestick) chart for Flutter with 6 technical indicators (MA, BOLL, MACD, KDJ, RSI, WR).
+version: 0.1.0
+homepage: https://github.com/ApeX-Protocol/FluxKline
+
+environment:
+  sdk: ^3.7.0
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  rxdart: ^0.28.0
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
