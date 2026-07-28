@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/basic_kline_page.dart';
-import 'pages/realtime_kline_page.dart';
-import 'pages/indicators_page.dart';
+
+import 'pages/kline_page.dart';
 import 'pages/trend_chart_page.dart';
 
 void main() {
@@ -17,9 +16,9 @@ class FluxKlineExampleApp extends StatelessWidget {
       title: 'FluxKline Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-        colorScheme: ColorScheme.dark(
-          primary: const Color(0xFFF0B90B),
-          surface: const Color(0xFF131722),
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFFF0B90B),
+          surface: Color(0xFF131722),
         ),
       ),
       home: const HomePage(),
@@ -37,12 +36,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
-  final _pages = const [
-    BasicKLinePage(),
-    RealtimeKLinePage(),
-    IndicatorsPage(),
-    TrendChartPage(),
-  ];
+  final _pages = const [KLinePage(), TrendChartPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +50,14 @@ class _HomePageState extends State<HomePage> {
         selectedItemColor: const Color(0xFFF0B90B),
         unselectedItemColor: Colors.grey,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.candlestick_chart), label: 'Basic'),
-          BottomNavigationBarItem(icon: Icon(Icons.timeline), label: 'Realtime'),
-          BottomNavigationBarItem(icon: Icon(Icons.analytics), label: 'Indicators'),
-          BottomNavigationBarItem(icon: Icon(Icons.trending_up), label: 'Trend'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.candlestick_chart),
+            label: 'K-Line',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.trending_up),
+            label: 'Trend',
+          ),
         ],
       ),
     );
