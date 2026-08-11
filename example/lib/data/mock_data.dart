@@ -6,12 +6,13 @@ class MockData {
     int count = 500,
     double startPrice = 40000,
     int intervalMs = Duration.millisecondsPerHour,
+    int? endTime,
   }) {
     final random = Random(42);
     final list = <KLineModel>[];
     var price = startPrice;
-    final now = DateTime.now().millisecondsSinceEpoch;
-    final startTime = now - count * intervalMs;
+    final lastTime = endTime ?? DateTime.now().millisecondsSinceEpoch;
+    final startTime = lastTime - (count - 1) * intervalMs;
 
     for (var i = 0; i < count; i++) {
       final change = (random.nextDouble() - 0.48) * price * 0.03;
@@ -21,14 +22,16 @@ class MockData {
       final low = min(open, close) - random.nextDouble() * price * 0.01;
       final vol = 100 + random.nextDouble() * 900;
 
-      list.add(KLineModel(
-        openTime: startTime + i * intervalMs,
-        openPrice: open,
-        highPrice: high,
-        lowPrice: low,
-        closePrice: close,
-        volume: vol,
-      ));
+      list.add(
+        KLineModel(
+          openTime: startTime + i * intervalMs,
+          openPrice: open,
+          highPrice: high,
+          lowPrice: low,
+          closePrice: close,
+          volume: vol,
+        ),
+      );
 
       price = close;
     }
@@ -48,10 +51,7 @@ class MockData {
 
     for (var i = 0; i < count; i++) {
       price += (random.nextDouble() - 0.48) * price * 0.005;
-      list.add(TrendItem(
-        price: price,
-        time: startTime + i * intervalMs,
-      ));
+      list.add(TrendItem(price: price, time: startTime + i * intervalMs));
     }
     return list;
   }

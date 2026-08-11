@@ -15,10 +15,17 @@ class FluxKlineExampleApp extends StatelessWidget {
     return MaterialApp(
       title: 'FluxKline Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
+      theme: ThemeData.dark(useMaterial3: true).copyWith(
+        scaffoldBackgroundColor: const Color(0xFF111111),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF111111),
+          foregroundColor: Colors.white,
+          elevation: 0,
+          surfaceTintColor: Colors.transparent,
+        ),
         colorScheme: const ColorScheme.dark(
-          primary: Color(0xFFF0B90B),
-          surface: Color(0xFF131722),
+          primary: Color(0xFFFED702),
+          surface: Color(0xFF111111),
         ),
       ),
       home: const HomePage(),
@@ -46,8 +53,8 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _currentIndex,
         onTap: (index) => setState(() => _currentIndex = index),
         type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xFF1E222D),
-        selectedItemColor: const Color(0xFFF0B90B),
+        backgroundColor: const Color(0xFF1F1F1F),
+        selectedItemColor: const Color(0xFFFED702),
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
